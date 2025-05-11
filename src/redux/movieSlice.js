@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchMovie = createAsyncThunk("movie/fetch", async (title) => {
-  const apikey = import.meta.env.VITE_MOIVE_API_KEY
+  const apikey = import.meta.env.VITE_MOVIE_API_KEY
   const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${title}`);
   const data = await response.json();
   return data.results;
