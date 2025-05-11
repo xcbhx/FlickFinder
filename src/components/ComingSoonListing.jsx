@@ -45,8 +45,8 @@ function ComingSoonListing() {
       <Swiper
         modules={[Navigation]}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: ".soon-button-next",
+          prevEl: ".soon-button-prev",
         }}
         spaceBetween={5}
         slidesPerView={2}
@@ -68,8 +68,8 @@ function ComingSoonListing() {
       </Swiper>
 
       {/* Custom Navigation Buttons */}
-      <div className="swiper-button-prev absolute top-[40%] left-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
-      <div className="swiper-button-next absolute top-[40%] right-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
+      <div className="soon-button-prev absolute top-[40%] left-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
+      <div className="soon-button-next absolute top-[40%] right-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
     </div>
   )
 }
