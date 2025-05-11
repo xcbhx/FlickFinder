@@ -1,4 +1,4 @@
-function ComingSoonListing() {
+function PopularMovies() {
   return (
     <div>
       <h1>Coming soon!</h1>
@@ -6,4 +6,4 @@ function ComingSoonListing() {
   )
 }
 
-export default ComingSoonListing;
+export default PopularMovies;

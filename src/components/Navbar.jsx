@@ -16,7 +16,7 @@ function Navbar({ onSearch }) {
       <nav className="w-full bg-slate-800 text-white shadow-md fixed top-0 left-0 z-10">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo/Title */}
-        <h1 className="text-xl font-semibold text-gray-200">🎬 FlickFinder</h1>
+        <a href="/"><h1 className="text-xl font-semibold text-gray-200">🎬 FlickFinder</h1></a>
 
         {/* Search Bar */}
         <form onSubmit={handleSubmit} className="flex">
