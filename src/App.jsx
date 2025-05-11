@@ -1,4 +1,3 @@
-import './App.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import MovieList from "./components/MovieList";
@@ -17,6 +16,7 @@ function App() {
   return (
     <div className='pt-20'>
       <Navbar onSearch={handleSearch} />
+      <MovieList />
       <Footer />
     </div>
   )
