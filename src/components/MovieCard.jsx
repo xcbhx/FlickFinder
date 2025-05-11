@@ -11,7 +11,7 @@ function MovieCard({ movie }) {
         <img
           src={posterUrl}
           alt={movie.title}
-          className="w-full h-72 object-cover"
+          className="w-[200px] h-[300px] object-contain rounded-md shadow"
         />
         <div className="p-4">
           <h2 className="text-lg font-semibold text-gray-800">{movie.title}</h2>
