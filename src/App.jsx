@@ -32,11 +32,13 @@ function AppWrapper() {
   return (
     <>
       <Navbar onSearch={handleSearch} />
-      <Routes>
-        <Route path='/' element={<Home />} /> 
-        <Route path='/search' element={<SearchResults />} />
-        <Route path='/movies/:id' element={<MovieDetails />} />
-      </Routes>
+      <main className="flex-grow pt-20">
+        <Routes>
+          <Route path='/' element={<Home />} /> 
+          <Route path='/search' element={<SearchResults />} />
+          <Route path='/movies/:id' element={<MovieDetails />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );
@@ -45,7 +47,7 @@ function AppWrapper() {
 function App() {
   return (
     <Router>
-      <div className='pt-20'>
+      <div className='min-h-screen flex flex-col'>
         <AppWrapper />
       </div>
     </Router>
