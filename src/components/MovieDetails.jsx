@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function MovieDetails() {
@@ -6,6 +6,7 @@ function MovieDetails() {
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const apikey = import.meta.env.VITE_MOVIE_API_KEY;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -38,6 +39,13 @@ function MovieDetails() {
           {movie.overview}
         </p>
       </div>
+      <button
+        onClick={() => navigate('/')}
+        className="mt-4 self-start px-3 py-1 bg-slate-700 text-white text-xs rounded hover:bg-slate-600 transition"
+      >
+        ← Back to Home
+      </button>
+
     </div>
   );
 }
