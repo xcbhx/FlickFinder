@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import MovieCard from "./MovieCard";
@@ -19,7 +19,7 @@ function InTheaterListing() {
         );
         if (!response.ok) throw new Error("Failed to fetch");
         const data = await response.json();
-        setMovies(data.results.slice(0, 15));
+        setMovies(data.results.slice(0, 12));
       } catch (err) {
         setError(err.message);
       } finally {
@@ -36,10 +36,11 @@ function InTheaterListing() {
   return (
     <div className="relative px-2">
       <Swiper
-        modules={[Navigation]}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+        modules={[Navigation, Autoplay]}
+        navigation={false}
+        autoplay={{
+          delay: 2000,   // time between slides (ms)
+          disableOnInteraction: false, // let users still control
         }}
         spaceBetween={5}
         slidesPerView={2}
@@ -59,10 +60,6 @@ function InTheaterListing() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Custom Navigation Buttons */}
-      <div className="swiper-button-prev absolute top-[40%] left-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
-      <div className="swiper-button-next absolute top-[40%] right-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
     </div>
   );
 }

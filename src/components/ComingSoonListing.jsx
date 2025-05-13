@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import MovieCard from "./MovieCard";
@@ -24,7 +24,7 @@ function ComingSoonListing() {
         const upcomingFiltered = data.results
           .filter(movie => new Date(movie.release_date) > today)
           .sort((a, b) => new Date(a.release_date) - new Date(b.release_date))
-          .slice(0, 10);
+          .slice(0, 5);
   
         setMovies(upcomingFiltered);
       } catch (err) {
@@ -43,10 +43,11 @@ function ComingSoonListing() {
   return (
     <div className="relative px-2">
       <Swiper
-        modules={[Navigation]}
-        navigation={{
-          nextEl: ".soon-button-next",
-          prevEl: ".soon-button-prev",
+        modules={[Navigation, Autoplay]}
+        navigation={false}
+        autoplay={{
+          delay: 1000,   // time between slides (ms)
+          disableOnInteraction: false, // let users still control
         }}
         spaceBetween={5}
         slidesPerView={2}
@@ -54,7 +55,7 @@ function ComingSoonListing() {
         breakpoints={{
           640: { slidesPerView: 2 },
           768: { slidesPerView: 3 },
-          1024: { slidesPerView: 5 },
+          1024: { slidesPerView: 4 },
         }}
         className="pb-8"
       >
@@ -66,10 +67,6 @@ function ComingSoonListing() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Custom Navigation Buttons */}
-      <div className="soon-button-prev absolute top-[40%] left-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
-      <div className="soon-button-next absolute top-[40%] right-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
     </div>
   )
 }

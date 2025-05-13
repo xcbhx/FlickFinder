@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import MovieCard from "./MovieCard";
+import { motion } from "framer-motion";
 
 function PopularMovies() {
   const [movies, setMovies] = useState([]);
@@ -22,7 +23,7 @@ function PopularMovies() {
         setMovies(
           data.results
             .sort((a, b) => b.vote_average - a.vote_average)
-            .slice(0, 15)
+            .slice(0, 12)
         );
       } catch (err) {
         setError(err.message);
@@ -40,10 +41,11 @@ function PopularMovies() {
   return (
     <div className="relative px-2">
       <Swiper
-        modules={[Navigation]}
-        navigation={{
-          nextEl: ".popular-button-next",
-          prevEl: ".popular-button-prev",
+        modules={[Navigation, Autoplay]}
+        navigation={false}
+        autoplay={{
+          delay: 3000,   // time between slides (ms)
+          disableOnInteraction: false, // let users still control
         }}
         spaceBetween={5}
         slidesPerView={2}
@@ -63,10 +65,6 @@ function PopularMovies() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Custom Navigation Buttons */}
-      <div className="popular-button-prev absolute top-[40%] left-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
-      <div className="popular-button-next absolute top-[40%] right-0 z-10 text-white bg-slate-800 hover:bg-slate-700 px-2 py-1 shadow-lg" />
     </div>
   );
 }
